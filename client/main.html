@@ -1,0 +1,60 @@
+<head>
+  <title>consumer</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor-model consumer!</h1>
+
+  {{> hello}}
+  {{> info}}
+</body>
+
+<template name="hello">
+  <div class="container">
+      <div class="panel-left">
+        <ul>
+          {{#each products}}
+            {{> productView}}
+          {{/each}}
+        </ul>
+      </div>
+      <div class="panel-right">
+        <div class="panel-top">
+          {{>shoppingCart}}
+        </div>
+        <div class="panel-bottom">
+          {{>productCreate}}
+        </div>
+      </div>
+    </div>
+</template>
+
+<template name="info">
+  <h2>This app is an example of using the meteor model functionality</h2>
+  <ul>
+    <li><a href="https://github.com/GuidionDev/meteor-model" target="_blank">npm install @gdn/meteor-model</a></li>
+  </ul>
+</template>
+
+<template name="productView">
+  <li>{{name}} €{{price}}
+      <button>Buy</button>
+  </li>
+</template>
+
+<template name="shoppingCart">
+  <div>
+    Total price: €{{total}}
+  </div>
+</template>
+
+<template name="productCreate">
+  <form class="new-product">
+    Name <input type="text" name="name" />
+      Price <input type="text" name="price" />
+      <button>Create</button>
+      {{#each errors}}
+        <div class="validation-error">{{message}}</div>
+      {{/each}}
+  </form>
+</template>
